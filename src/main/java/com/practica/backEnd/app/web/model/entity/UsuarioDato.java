@@ -17,7 +17,12 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "usuario_datos")
@@ -40,8 +45,10 @@ public class UsuarioDato implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@NotNull
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date usuarioFecha;
 	@OneToMany(mappedBy = "usuarioId")
+	@JsonIgnore
 	private List<UsuarioHasVenta> lista;
 	
 	public UsuarioDato() {

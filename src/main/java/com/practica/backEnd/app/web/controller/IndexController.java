@@ -62,7 +62,7 @@ public class IndexController {
 	 */
 	@GetMapping("/springLogin2")
 	public String springLogin(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(name = "logout", required = false) String logout, @RequestParam(name = "lang", required = false) String lang, Model model, Principal principal,
+			@RequestParam(name = "logout", required = false) String logout, Model model, Principal principal,
 			RedirectAttributes redirect, Locale locale) {
 		if (principal != null) {
 			redirect.addFlashAttribute("mensaje", "Ya iniciaste sesión!");
@@ -74,7 +74,6 @@ public class IndexController {
 		if (logout != null) {
 			model.addAttribute("mensaje", "Sessión cerrada!");
 		}
-		model.addAttribute("lang", lang);
 		return "login";
 	}
 

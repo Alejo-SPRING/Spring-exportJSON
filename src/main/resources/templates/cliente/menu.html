@@ -14,6 +14,7 @@
 					<div class="card-header">
 						<h3 class="text-center text-dark card-title" th:text="${titulo}"></h3>
 						<a th:href="@{'/cliente/verFac'(format=pdf)}" class="btn btn-outline-danger">Exportar PDF</a>
+						<a th:href="@{'/cliente/verFac'(format=json)}" class="btn btn-outline-warning">Exportar JSON</a>
 					</div>
 					<div class="card-body">
 						<form method="get" id="formBuscar">

@@ -11,8 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "usuario_has_venta")
+@JsonIgnoreProperties({"usuarioId", "usuarioHasVentaId"})
 public class UsuarioHasVenta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,9 +28,11 @@ public class UsuarioHasVenta implements Serializable {
 	private Integer usuarioHasVentaId;
 	@JoinColumn(name = "usuario_id", referencedColumnName = "usuariodatos_id")
 	@ManyToOne
+	@JsonIgnore
 	private UsuarioDato usuarioId;
 	@JoinColumn(name = "venta_id", referencedColumnName = "venta_id")
 	@ManyToOne
+	@JsonManagedReference
 	private Venta ventaId;
 
 	public Integer getUsuarioHasVentaId() {

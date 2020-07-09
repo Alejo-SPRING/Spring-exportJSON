@@ -14,6 +14,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "productos")
 public class Producto implements Serializable{
@@ -32,6 +35,7 @@ public class Producto implements Serializable{
 	@Column(name = "producto_img")
 	private String productoImg;
 	@OneToMany(mappedBy = "productoId", fetch = FetchType.LAZY)
+	@JsonBackReference
 	private List<VentaHasProducto> listProductos;
 
 	public Integer getProductoId() {
